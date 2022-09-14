@@ -62,6 +62,17 @@ function writeRedisObject(objRedis, value) {
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(response);
+            readRedisObject(objRedis);
+        }
+    });
+}
+
+// Read Redis Object of keys
+function readRedisObject(objRedis) {
+    client.hgetall(objRedis, function(err, response) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(response);
         }
     });
 }
