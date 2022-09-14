@@ -20,6 +20,17 @@ function writeRedisKey(keyRedis, value) {
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(response);
+            epireRedisKey(keyRedis, 30);
+        }
+    });
+}
+
+// Set key expiry time
+function expireRedisKey(keyRedis, value) {
+    client.expire(keyRedis, value, function(err, response) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(response);
         }
     });
 }
