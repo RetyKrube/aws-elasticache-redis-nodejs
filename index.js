@@ -46,6 +46,22 @@ function readRedisKey(keyRedis) {
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(response);
+            var objInfo = {
+                info1: "This is info 1",
+                info2: "This is info 2",
+                info3: "This is info 3"
+            };
+            writeRedisObject("myInfo", objInfo);
+        }
+    });
+}
+
+// Write Redis Object of keys
+function writeRedisObject(objRedis, value) {
+    client.hmset(objRedis, value, function(err, response) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(response);
         }
     });
 }
