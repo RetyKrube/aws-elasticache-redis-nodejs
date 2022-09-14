@@ -32,6 +32,7 @@ function expireRedisKey(keyRedis, value) {
         else {
             if (response)
                 console.log("Successfully set expiry time");
+                readRedisKey(keyRedis);
             else
                 console.log("Unsuccessful. Key " + keyRedis + "does not exist!");
         }
