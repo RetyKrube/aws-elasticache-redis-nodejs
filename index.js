@@ -11,4 +11,15 @@ var client = redis.createClient(PORT, HOST);
 // Connect to Redis endpoint 
 client.on('connect', function () {
     console.log('Connected to Redis node: ' + redisEndpoint);
+    writeRedisKey("myHighScore", "1000");
 });
+
+// Write to Redis
+function writeRedisKey(keyRedis, value) {
+    client.set(keyRedis, value, function(err, response) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(response);
+        }
+    });
+}
